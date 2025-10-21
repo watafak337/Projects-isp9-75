@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int main() {
+	setlocale(0, "");
+	cout << "Программа: Решение примеров" << endl;
+	int user_number, answer;
+	cout << "Введите число:";
+	cin >> user_number;
+
+	for (int i = 1; i <= user_number; ++i) {
+		cout << "Решите пример:" << user_number << "x" << i << "=";
+		cin >> answer;
+
+		if (answer == user_number * i) {
+			cout << "Пример решён верно" << endl;
+		}
+		else {
+			cout << "Ошибка! Пример решён неверно" << endl;
+			return 0;
+		}
+	}
+	cout << "Все примеры решены" << endl;
+	return 0;
+}
