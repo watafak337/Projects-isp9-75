@@ -9,6 +9,7 @@ int main() {
 	cout << "4) Умножение     |  *" << endl;
 	cout << "5) Остаток       |  %" << endl;
 	cout << "Выберите номер операции" << endl;
+
 	int oper;
 	int number_1;
 	int number_2;
@@ -22,30 +23,36 @@ int main() {
 	if (oper == 1) {
 		cout << "Результат: " << number_1 + number_2 << endl;
 	}
-	if (oper == 2) {
+	else if (oper == 2) {
 		cout << "Результат: " << number_1 - number_2 << endl;
 	}
-	if (oper == 3) {
+	else if (oper == 3) {
 		if (number_2 == 0) {
 			cout << "Ошибка. Делить на ноль нельзя" << endl;
 			return 0;
 		}
 		else {
-			cout << "Результат: " << number_1 * number_2 << endl;
+			cout << "Результат: " << number_1 / number_2 << endl;
 		}
 	}
-	if (oper == 4) {
+
+	else if (oper == 4) {
 		cout << "Результат: " << number_1 * number_2 << endl;
 	}
-	if (oper == 5) {
+	else if (oper == 5) {
 		if (number_2 == 0) {
-		cout << "Ошибка. Делить на ноль нельзя" << endl;
-		return 0;
+			cout << "Ошибка. Делить на ноль нельзя" << endl;
+			return 0;
+		}
+		else {
+			cout << "Результат: " << number_1 % number_2 << endl;
+		}
 	}
 	else {
-		cout << "Результат: " << number_1 % number_2 << endl;
+		cout << "Ошибка";
 	}
-}
+
+	return 0;
 
 
 }
