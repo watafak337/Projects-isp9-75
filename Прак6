@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+int main() {
+	setlocale(0, "");
+
+	cout << "Выберите месяц" << endl;
+	cout << "[1] Январь" << endl;
+	cout << "[2] Февраль" << endl;
+	cout << "[3] Март" << endl;
+	cout << "[4] Апрель" << endl;
+	cout << "[5] Май" << endl;
+	cout << "[6] Июнь" << endl;
+	cout << "[7] Июль" << endl;
+	cout << "[8] Август" << endl;
+	cout << "[9] Сентябрь" << endl;
+	cout << "[10] Октябрь" << endl;
+	cout << "[11] Ноябрь" << endl;
+	cout << "[12] Декабрь" << endl;
+	cout << "Введите число от 1 до 12" << endl;
+
+
+	int m;
+	cin >> m;
+
+	switch (m) {
+	case 1: {
+		cout << "Месяц: Январь" << endl;
+		break;
+	}
+	case 2: {
+		cout << "Месяц: Феврваль" << endl;
+		break;
+	}
+	case 3: {
+		cout << "Месяц: Март" << endl;
+		break;
+	}
+	case 4: {
+		cout << "Месяц: Апрель" << endl;
+		break;
+	}
+	case 5: {
+		cout << "Месяц: Май" << endl;
+		break;
+	}
+	case 6: {
+		cout << "Месяц: Июнь" << endl;
+		break;
+	}
+	case 7: {
+		cout << "Месяц: Июль" << endl;
+		break;
+	}
+	case 8: {
+		cout << "Месяц: Август" << endl;
+		break;
+	}
+	case 9: {
+		cout << "Месяц: Сентябрь" << endl;
+		break;
+	}
+	case 10: {
+		cout << "Месяц: Октябрь" << endl;
+		break;
+	}
+	case 11: {
+		cout << "Месяц: Ноябрь" << endl;
+		break;
+	}
+	case 12: {
+		cout << "Месяц: Декабрь" << endl;
+		break;
+	}
+	default:
+		cout << "Ошибка! Такого месяца не существует" << endl;
+	}
+
+
+
+
+		return 0;
+}
