@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    srand(time(0));
+    int menu;
+    
+    while(true) {
+        cout << "=== МЕНЮ ===" << endl;
+        cout << "1. Начать игру" << endl;
+        cout << "2. Выйти" << endl;
+        cout << "Ваш выбор: ";
+        cin >> menu;
+        
+        if(menu == 2) break;
+        
+        if(menu == 1) {
+            // Генерация 3 уникальных чисел
+            int num1, num2, num3;
+            num1 = rand() % 10 + 1;
+            
+            num2 = rand() % 10 + 1;
+            while(num2 == num1) {
+                num2 = rand() % 10 + 1;
+            }
+            
+            num3 = rand() % 10 + 1;
+            while(num3 == num1 || num3 == num2) {
+                num3 = rand() % 10 + 1;
+            }
+            
+            int attempts = 5;
+            int guessed = 0;
+            
+            while(attempts > 0 && guessed < 3) {
+                cout << "\n[+] Угаданных чисел: [" << guessed << " / 3]" << endl;
+                cout << "[+] Попыток: [" << attempts << "]" << endl;
+                
+                int guess;
+                cout << "[>] Угадать число: ";
+                cin >> guess;
+                
+                if(guess == num1 || guess == num2 || guess == num3) {
+                    cout << "[+] Вы угадали число!" << endl;
+                    guessed++;
+                } else {
+                    cout << "[-] Вы не угадали число!" << endl;
+                }
+                
+                attempts--;
+            }
+            
+            if(guessed == 3) {
+                cout << "\n*** Поздравляем! Вы выиграли! ***" << endl;
+            } else {
+                cout << "\n*** Игра окончена. Загаданные числа: " 
+                     << num1 << ", " << num2 << ", " << num3 << " ***" << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
