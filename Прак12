@@ -1,0 +1,218 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    setlocale(0, "");
+    string playerName = "user";
+    int questionCount = 8;
+    int colorChoice = 2;
+
+    int lives = 3;
+    int score = 0;
+    int currentQuestion = 0;
+
+    string questions[] = {
+        "Что такое ИИ?",
+        "Основа биткоина?",
+        "Что значит *Облако*? ",
+        "Для чего нужен VPN?",
+        "Что такое IoT?",
+        "Главная задача DevOps?",
+        "Что делает 5G?",
+        "Что такое API?"
+    };
+
+    string options[][4] = {
+        {"Умные роботы", "Сложная программа", "Машина, имитирующая разум*", "База данных"},
+        {"Облако", "Блокчейн*", "HTTP", "Файрвол"},
+        {"Метеосервер", "Хранение данных в интернете*", "Игровая консоль", "Тип вируса"},
+        {"Ускорить интернет", "Создать безопасное соединение*", "Удалить вирусы", "Разблокировать графику"},
+        {"Новый iPhone", "Интернет вещей*", "Язык программирования", "Игровая платформа"},
+        {"Писать код", "Чинить компьютеры", "Автоматизировать разработку и эксплуатацию*", "Создавать дизайн"},
+        {"Улучашет качество звука", "Увеличивает скорость интернета*", "Заменяет Wi-Fi", "Увеличивает память смартфона"},
+        {"Новый процессор", "Приложение для телефона", "Интерфейс для связи программ*", "Тип антивируса"}
+    };
+
+    char correctAnswers[] = { 'C', 'B', 'B', 'B', 'B', 'C', 'B', 'C' };
+
+    bool running = true;
+
+    while (running) {
+        cout << "== ВИКТОРИНА ==" << endl;
+        cout << "1. Начать игру" << endl;
+        cout << "2. Настройки" << endl;
+        cout << "3. Правила" << endl;
+        cout << "4. Выйти" << endl;
+        cout << "Выберите пункт: ";
+
+        int menuChoice;
+        cin >> menuChoice;
+
+        if (menuChoice == 1) {
+            lives = 3;
+            score = 0;
+            currentQuestion = 0;
+
+            while (lives > 0 && currentQuestion < questionCount) {
+                cout << "\n[ + ] Игрок: " << playerName << " | жизни: " << lives << " | очки: " << score << endl;
+                cout << "[ " << (currentQuestion + 1) << " ] Вопрос: " << questions[currentQuestion] << endl;
+                cout << "[ A ] " << options[currentQuestion][0] << "\t\t[ B ] " << options[currentQuestion][1] << endl;
+                cout << "[ C ] " << options[currentQuestion][2] << "\t\t[ D ] " << options[currentQuestion][3] << endl;
+
+                cout << "[ + ] Выбрать ответ: ";
+                char answer;
+                cin >> answer;
+
+                char correctUpper = correctAnswers[currentQuestion];
+                char correctLower = tolower(correctAnswers[currentQuestion]);
+
+                if (answer == correctUpper || answer == correctLower) {
+                    score += 10;
+                    cout << "\n[ + ] Правильно! +10 очков" << endl;
+                }
+                else {
+                    lives--;
+                    cout << "\n[ - ] Неправильно! -1 жизнь" << endl;
+                    cout << "[ + ] Правильный ответ: " << correctAnswers[currentQuestion] << endl;
+                }
+
+                currentQuestion++;
+
+                if (lives > 0 && currentQuestion < questionCount) {
+                    cout << "\nНажмите Enter для продолжения...";
+                    cin.ignore();
+                    cin.get();
+                }
+            }
+
+            cout << "\n== ИГРА ОКОНЧЕНА ==" << endl;
+            if (lives > 0) {
+                cout << "[ + ] ПОБЕДА! Вы ответили на все вопросы!" << endl;
+            }
+            else {
+                cout << "[ - ] ПРОИГРЫШ! Закончились жизни!" << endl;
+            }
+            cout << "[ + ] Итоговый счет: " << score << " очков" << endl;
+            cout << "[ + ] Осталось жизней: " << lives << endl;
+            cout << "\nНажмите Enter для возврата в меню...";
+            cin.ignore();
+            cin.get();
+
+        }
+        else if (menuChoice == 2) {
+            bool inSettings = true;
+
+            while (inSettings) {
+                cout << "\n== НАСТРОЙКИ ==" << endl;
+                cout << "1. Редактирование имени игрока" << endl;
+                cout << "2. Количество вопросов (сейчас: " << questionCount << ")" << endl;
+                cout << "3. Цвет интерфейса" << endl;
+                cout << "4. Выйти в главное меню" << endl;
+                cout << "Выберите пункт: ";
+
+                int settingsChoice;
+                cin >> settingsChoice;
+
+                if (settingsChoice == 1) {
+                    cout << "Текущее имя: " << playerName << endl;
+                    cout << "Введите новое имя: ";
+                    cin >> playerName;
+                    cout << "Имя изменено на: " << playerName << endl;
+
+                }
+                else if (settingsChoice == 2) {
+                    cout << "Текущее количество вопросов: " << questionCount << endl;
+                    cout << "Выберите количество вопросов (8/10/12): ";
+                    int newCount;
+                    cin >> newCount;
+
+                    if (newCount == 8 || newCount == 10 || newCount == 12) {
+                        questionCount = newCount;
+                        cout << "Количество вопросов изменено на: " << questionCount << endl;
+                    }
+                    else {
+                        cout << "Недопустимое количество вопросов!" << endl;
+                    }
+
+                }
+                else if (settingsChoice == 3) {
+                    cout << "\n== ВЫБОР ЦВЕТА ==" << endl;
+                    cout << "1. Стандартный (Белый)" << endl;
+                    cout << "2. Зеленый" << endl;
+                    cout << "3. Синий" << endl;
+                    cout << "4. Красный" << endl;
+                    cout << "Текущий цвет: " << colorChoice << endl;
+                    cout << "Выберите цвет: ";
+
+                    int newColor;
+                    cin >> newColor;
+
+                    if (newColor >= 1 && newColor <= 4) {
+                        colorChoice = newColor;
+                        cout << "Цвет интерфейса изменен!" << endl;
+
+                        if (colorChoice == 1) {
+                            cout << "[ Цвет: Стандартный ]" << endl;
+                        }
+                        else if (colorChoice == 2) {
+                            cout << "[ Цвет: Зеленый ]" << endl;
+                        }
+                        else if (colorChoice == 3) {
+                            cout << "[ Цвет: Синий ]" << endl;
+                        }
+                        else if (colorChoice == 4) {
+                            cout << "[ Цвет: Красный ]" << endl;
+                        }
+                    }
+                    else {
+                        cout << "Недопустимый выбор цвета!" << endl;
+                    }
+
+                }
+                else if (settingsChoice == 4) {
+                    inSettings = false;
+                }
+                else {
+                    cout << "Неверный выбор!" << endl;
+                }
+            }
+
+        }
+        else if (menuChoice == 3) {
+            bool inRules = true;
+
+            while (inRules) {
+                cout << "\n== ПРАВИЛА ИГРЫ ==" << endl;
+                cout << "1. Игрок получает 10 очков за каждый правильный ответ" << endl;
+                cout << "2. Игрок теряет 1 жизнь за каждый неправильный ответ" << endl;
+                cout << "3. Игра продолжается пока есть жизни и не закончились вопросы" << endl;
+                cout << "4. Начальное количество жизней: 3" << endl;
+                cout << "5. Можно настроить количество вопросов и имя игрока" << endl;
+                cout << "6. Ответы можно вводить как заглавными, так и строчными буквами" << endl;
+                cout << "\n1. Выйти в главное меню" << endl;
+                cout << "Выберите пункт: ";
+
+                int rulesChoice;
+                cin >> rulesChoice;
+
+                if (rulesChoice == 1) {
+                    inRules = false;
+                }
+                else {
+                    cout << "Неверный выбор!" << endl;
+                }
+            }
+
+        }
+        else if (menuChoice == 4) {
+            cout << "До свидания!" << endl;
+            running = false;
+        }
+        else {
+            cout << "Неверный выбор! Попробуйте снова." << endl;
+        }
+    }
+
+    return 0;
+}
