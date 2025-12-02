@@ -1,0 +1,150 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(0, "");
+    system("cls");
+    cout << "Программа - \"Геометрические фигуры\"" << endl;
+    cout << "[ 1 ] Линия" << endl;
+    cout << "[ 2 ] Квадрат" << endl;
+    cout << "[ 3 ] Прямоугольник" << endl;
+    cout << "[ + ] Выберите фигуру: ";
+    int num_shape;
+    cin >> num_shape;
+
+    if (num_shape == 1) {
+        cout << "[ + ] Фигура: \"Линия\"" << endl;
+        cout << "[ 1 ] Горизонтальная" << endl;
+        cout << "[ 2 ] Вертикальная" << endl;
+
+        cout << "[ + ] Выберите тип: ";
+        int type_of_shape;
+        cin >> type_of_shape;
+
+        cout << "[ + ] Введите размер: ";
+        int size;
+        cin >> size;
+
+        cout << "[ + ] Введите символ: ";
+        char symbol;
+        cin >> symbol;
+
+        if (type_of_shape == 1) {
+            int i = 0;
+            while (i < size) {
+                cout << symbol;
+                i += 1;
+            }
+            cout << endl;
+        }
+        else if (type_of_shape == 2) {
+            int i = 0;
+            while (i < size) {
+                cout << symbol << endl;
+                i += 1;
+            }
+        }
+        else {
+            cout << "[!] Неверный тип фигуры!" << endl;
+        }
+    }
+    else if (num_shape == 2) {
+        system("cls");
+        cout << "[ + ] Фигура: \"Квадрат\"" << endl;
+        cout << "[ 1 ] Заполненный" << endl;
+        cout << "[ 2 ] Пустой" << endl;
+
+        cout << "[ + ] Выберите тип: ";
+        int type_of_square;
+        cin >> type_of_square;
+
+        cout << "[ + ] Размер: ";
+        int size;
+        cin >> size;
+
+        cout << "[ + ] Текстура: ";
+        char texture;
+        cin >> texture;
+
+        cout << "[ + ] Результат:" << endl;
+
+        if (type_of_square == 1) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    cout << texture << " ";
+                }
+                cout << endl;
+            }
+        }
+        else if (type_of_square == 2) {
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
+                        cout << texture << " ";
+                    }
+                    else {
+                        cout << "  ";
+                    }
+                }
+                cout << endl;
+            }
+        }
+        else {
+            cout << "[!] Неверный тип квадрата!" << endl;
+        }
+    }
+    else if (num_shape == 3) {
+        system("cls");
+        cout << "[ + ] Фигура: \"Прямоугольник\"" << endl;
+        cout << "[ 1 ] Заполненный" << endl;
+        cout << "[ 2 ] Пустой" << endl;
+
+        cout << "[ + ] Выберите тип: ";
+        int type_of_rectangle;
+        cin >> type_of_rectangle;
+
+        cout << "[ + ] Ширина: ";
+        int width;
+        cin >> width;
+
+        cout << "[ + ] Высота: ";
+        int height;
+        cin >> height;
+
+        cout << "[ + ] Текстура: ";
+        char texture;
+        cin >> texture;
+
+        cout << "[ + ] Результат:" << endl;
+
+        if (type_of_rectangle == 1) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    cout << texture << " ";
+                }
+                cout << endl;
+            }
+        }
+        else if (type_of_rectangle == 2) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (i == 0 || i == height - 1 || j == 0 || j == width - 1) {
+                        cout << texture << " ";
+                    }
+                    else {
+                        cout << "  ";
+                    }
+                }
+                cout << endl;
+            }
+        }
+        else {
+            cout << "[!] Неверный тип прямоугольника!" << endl;
+        }
+    }
+    else {
+        cout << "[!] Неверный номер фигуры!" << endl;
+    }
+
+    return 0;
+}
