@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	setlocale(0, "");
+
+	int num, total = 0;
+
+	while (true) {
+		cout << "[+] Введите число: " << endl;
+		cin >> num;
+
+		if (num == 0) {
+			break;
+		}
+
+		total += num;
+	}
+
+	cout << "[+] Полученная сумма: " << total << endl;
+	return 0;
+}
