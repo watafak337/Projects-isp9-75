@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
     setlocale(0, "");
-    
+
     cout << "Программа - \"Геометрические фигуры\"" << endl;
     cout << "[ 1 ] Линия" << endl;
     cout << "[ 2 ] Квадрат" << endl;
